@@ -5,7 +5,7 @@
 after setting your DB and configs in the ` src/main/resources/application.properties`
 you can run the main method in the `CloudComputingFinalProjectApplication` class.
 
-usage:
+## usage
 
 ```bash 
 curl --location --request POST 'http://localhost:8081/doit' --header 'Content-Type: application/json' --data '{"url":"https://01d.ir/test"}'
