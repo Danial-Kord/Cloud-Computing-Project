@@ -4,7 +4,7 @@
 after setting your DB and configs in the ` src/main/resources/application.properties`
 you can run the main method in the `CloudComputingFinalProjectApplication` class in your IDE.
 
-## project Build
+## Project Build
 
 run `./mvnw clean package` in the project folder. (after building the project, you can see the output directory on the terminal)
 
@@ -14,7 +14,7 @@ now, the Jar file is in `target/finalProject-0.1-spring-boot.jar`, and you can r
 
 
 
-## usage
+## Usage
 
 ```bash 
 curl --location --request POST 'http://localhost:8081/doit' --header 'Content-Type: application/json' --data '{"url":"https://01d.ir/test"}'
