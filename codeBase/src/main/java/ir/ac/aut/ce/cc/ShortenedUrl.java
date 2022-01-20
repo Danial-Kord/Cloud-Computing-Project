@@ -1,6 +1,6 @@
 package ir.ac.aut.ce.cc;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,13 +17,13 @@ public class ShortenedUrl {
 	private String url;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	private Timestamp expire;
+	private Date expire;
 
 	public ShortenedUrl() {
 		// default
 	}
 
-	public ShortenedUrl(String url, Timestamp expireDate) {
+	public ShortenedUrl(String url, Date expireDate) {
 		this.url = url;
 		this.expire = expireDate;
 	}
@@ -44,11 +44,11 @@ public class ShortenedUrl {
 		this.url = url;
 	}
 
-	public Timestamp getExpire() {
+	public Date getExpire() {
 		return expire;
 	}
 
-	public void setExpire(Timestamp expire) {
+	public void setExpire(Date expire) {
 		this.expire = expire;
 	}
 

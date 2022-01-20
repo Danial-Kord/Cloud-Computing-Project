@@ -1,7 +1,8 @@
 package ir.ac.aut.ce.cc;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +23,10 @@ public class UrlService {
 		if (url == null || url.isBlank()) {
 			throw new Exception("Empty URL!");
 		}
-		LocalDateTime exprieTime = LocalDateTime.now()
+		LocalDateTime expireTime = LocalDateTime.now()
 				.plusDays(Long.parseLong(environment.getProperty("app.config.expire")));
 
-		ShortenedUrl newURL = new ShortenedUrl(url, Timestamp.valueOf(exprieTime));
+		ShortenedUrl newURL = new ShortenedUrl(url, Date.from(expireTime.toInstant(ZoneOffset.UTC)));
 
 		return repository.save(newURL);
 
@@ -42,7 +43,7 @@ public class UrlService {
 		if (requestedURL.isEmpty()) {
 			throw new Exception("Not Found");
 		}
-		if (requestedURL.get().getExpire().before(Timestamp.valueOf(LocalDateTime.now()))) {
+		if (requestedURL.get().getExpire().before(Date.from(LocalDateTime.now().toInstant(ZoneOffset.UTC)))) {
 			throw new Exception("Expired !");
 		}
 
