@@ -2,7 +2,7 @@
 
 
 ## Project
-after setting your DB and configs in `the application.properties`
+after setting your DB and configs in the ` src/main/resources/application.properties`
 you can run the main method in the `CloudComputingFinalProjectApplication` class.
 
 usage:
