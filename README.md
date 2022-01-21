@@ -1,18 +1,17 @@
 # Cloud Computing Project
 
-## Project
-after setting your DB and configs in the ` src/main/resources/application.properties`
-you can run the main method in the `CloudComputingFinalProjectApplication` class in your IDE.
+## Configuration
+You should create a folder in a directory and put config files there (under the `appConfigs` directory in this repo).
 
-## Project Build
+## Project Build & Run
 
-run `./mvnw clean package` in the project folder. (after building the project, you can see the output directory on the terminal)
+Run `./mvnw clean package` in the project folder; after a while, Maven prints out the project's `jar` file path on the terminal.
 
-now, the Jar file is in `target/finalProject-0.1-spring-boot.jar`, and you can run the application by the following command:
+After maven build, the Jar file usually is in `target/finalProject-0.1-spring-boot.jar`, and you can run the application by the following command:
 
-`java -jar target/finalProject-0.1-spring-boot.jar`
+`java -jar target/finalProject-0.1-spring-boot.jar --spring.config.name=applicationConfig,secretConfig --spring.config.location=file:///home/ali/appConfigs/`
 
-
+Note that `applicationConfig` and `secretConfig` are config files name under the directory of `/home/ali/appConfigs/` that I had created before.
 
 ## Usage
 
