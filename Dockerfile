@@ -16,5 +16,12 @@ COPY --from=builder /usr/src/app/target/finalProject-0.1-spring-boot.jar /usr/ap
 RUN apk update && \
     apk add mysql-client
 
+RUN apk upgrade
 
-ENTRYPOINT ["java", "-jar", "/usr/app/finalProject-0.1-spring-boot.jar"]
+RUN apk add curl
+
+RUN mkdir -p /usr/src/conf
+
+#COPY appConfigs/ /usr/src/conf
+
+ENTRYPOINT ["java", "-jar", "/usr/app/finalProject-0.1-spring-boot.jar", "--spring.config.name=applicationConfig,secretConfig", "--spring.config.location=file:///usr/src/conf/"]
