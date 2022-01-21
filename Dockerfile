@@ -12,4 +12,9 @@ FROM adoptopenjdk/openjdk11:jre-11.0.9_11.1-alpine
 
 COPY --from=builder /usr/src/app/target/finalProject-0.1-spring-boot.jar /usr/app/finalProject-0.1-spring-boot.jar
 
+
+RUN apk update && \
+    apk add mysql-client
+
+
 ENTRYPOINT ["java", "-jar", "/usr/app/finalProject-0.1-spring-boot.jar"]
