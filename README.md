@@ -11,7 +11,7 @@ After maven build, the Jar file usually is in `target/finalProject-0.1-spring-bo
 
 `java -jar target/finalProject-0.1-spring-boot.jar --spring.config.name=applicationConfig,secretConfig --spring.config.location=file:///home/ali/appConfigs/`
 
-Note that `applicationConfig` and `secretConfig` are config files name under the directory of `/home/ali/appConfigs/` that I had created before.
+Note that `applicationConfig.properties` and `secretConfig.properties` are config files name under the directory of `/home/ali/appConfigs/` that I had created before.
 
 ## Usage
 
