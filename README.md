@@ -22,7 +22,10 @@ For creating docker runtime image of project run `sudo docker build -t {your des
 Then run the image using `sudo docker run --mount type=bind,src={Host path to config folder},target=/usr/src/conf -p {Host port}:8081 -it {your desired name of image}`
 
 ### database build
-Simply run `sudo docker run --detach --name={container name} --env="MYSQL_ROOT_PASSWORD={root password}" --publish {host port}:{DB port} --volume=/root/docker/{container name}/conf.d:/etc/mysql/conf.d --volume={DB local storage}:/var/lib/mysql mysql`
+Simply run 
+```bash 
+sudo docker run --detach --name={container name} --env="MYSQL_ROOT_PASSWORD={root password}" --publish {host port}:{DB port} --volume=/root/docker/{container name}/conf.d:/etc/mysql/conf.d --volume={DB local storage}:/var/lib/mysql mysql
+```
 you can use `sudo docker inspect {container name}` to check ip and other values for connection purposes
 
 
