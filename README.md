@@ -24,7 +24,7 @@ Then run the image using `sudo docker run --mount type=bind,src={Host path to co
 ### database build
 Simply run 
 ```bash 
-sudo docker run --detach --name={container name} --env="MYSQL_ROOT_PASSWORD={root password}" --publish {host port}:{DB port} --volume=/root/docker/{container name}/conf.d:/etc/mysql/conf.d --volume={DB local storage}:/var/lib/mysql mysql
+sudo docker run --detach --name={containerName} --env="MYSQL_ROOT_PASSWORD={rootPassword}" --publish {host port}:{DBport} --volume=/root/docker/{containerName}/conf.d:/etc/mysql/conf.d --volume={DBlocalStorage}:/var/lib/mysql mysql
 ```
 you can use `sudo docker inspect {container name}` to check ip and other values for connection purposes
 
