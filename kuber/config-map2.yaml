@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: urlshortener-config2
+data:
+  secretConfig.properties: |-
+    spring.datasource.password = ${MYSQL_ROOT_PASSWORD}
+
+
