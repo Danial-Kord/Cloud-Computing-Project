@@ -29,7 +29,7 @@ you can use `sudo docker inspect {container name}` to check ip and other values 
 
 ## Minikube
 ### Minikube installation
-check out https://minikube.sigs.k8s.io/docs/start/
+check out https://minikube.sigs.k8s.io/docs/start/ <br>
 for x86-64 architucture follow these steps:
 1. curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
 2. sudo install minikube-linux-amd64 /usr/local/bin/minikube
@@ -49,10 +49,10 @@ first go to the `./kuber` path then:
 
 4. `minikube kubectl apply -f mysql-storage.yaml` or `sudo minikube kubectl -- apply -f mysql-storage.yaml`
 
-5. `minikube kubectl apply -f mysql-deployment.yaml` or `sudo minikube kubectl -- apply -f mysql-deployment.yaml`
+5. `minikube kubectl apply -f mysql-deployment.yaml` or `sudo minikube kubectl -- apply -f mysql-deployment.yaml` <br>
 after this step check the STATUS of pods by `sudo minikube kubectl get pod -- -o wide` command, it should be RUNNING after a while.
 
-6. `minikube kubectl apply -f mysql-service.yaml` or `sudo minikube kubectl -- apply -f mysql-service.yaml`
+6. `minikube kubectl apply -f mysql-service.yaml` or `sudo minikube kubectl -- apply -f mysql-service.yaml` <br>
 now database setup is completed. Use `sudo minikube kubectl get deployment -- -o wide` and `sudo minikube kubectl get service -- -o wide` for checking status.
 
 ### urlshortener deploy steps
@@ -62,19 +62,19 @@ now database setup is completed. Use `sudo minikube kubectl get deployment -- -o
 
 3. `minikube kubectl apply -f config-map2.yaml` or `sudo minikube kubectl -- apply -f config-map2.yaml`
 
-4. `minikube kubectl apply -f urlshortener-deployment.yaml` or `sudo minikube kubectl -- apply -f urlshortener-deployment.yaml`
+4. `minikube kubectl apply -f urlshortener-deployment.yaml` or `sudo minikube kubectl -- apply -f urlshortener-deployment.yaml` <br>
 after this step check the STATUS of pods by `sudo minikube kubectl get pod -- -o wide` command, it should be RUNNING after a while.
 
-5. `minikube kubectl apply -f urlshortener-service.yaml` or `sudo minikube kubectl -- apply -f urlshortener-service.yaml`
+5. `minikube kubectl apply -f urlshortener-service.yaml` or `sudo minikube kubectl -- apply -f urlshortener-service.yaml` <br>
 now database setup is completed. Use `sudo minikube kubectl get deployment -- -o wide` and `sudo minikube kubectl get service -- -o wide` for checking status.
 
-If you reach here, It is all done. For testing your service try steps below:
+If you reach here, It is all done. For testing your service try steps below: <br>
 Before moving forward save try to copy the ip of the service in the `sudo minikube kubectl get service -- -o wide` command.
 
 ### Testing service pod
 1. `sudo minikube kubectl run test -- --image=danialkm/myubuntu:latest sleep infinity`
-2. `sudo minikube kubectl exec -- --stdin --tty test -- bash`
-in the opened bash check the system working by typing Usage command below!
+2. `sudo minikube kubectl exec -- --stdin --tty test -- bash` <br>
+in the opened bash check the system working by typing Usage command below! <br>
 Note that instead of `localhost` in the POST url, you need to type service ip.
 
 ## Usage
