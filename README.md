@@ -19,8 +19,10 @@ Note that there is no need to change user value inside `applicationConfig.proper
 ## Docker config
 ### application Dockerfile
 For creating docker runtime image of project run `sudo docker build -t {your desired name of image} .`
-Then run the image using `sudo docker run --mount type=bind,src={Host path to config folder},target=/usr/src/conf -p {Host port}:8081 -it {your desired name of image}`
-
+Then run the image using 
+```bash
+sudo docker run --mount type=bind,src={HostPathToConfigFolder},target=/usr/src/conf -p {HostPort}:8081 -it {yourDesiredNameOfImage}
+```
 ### database build
 Simply run 
 ```bash 
