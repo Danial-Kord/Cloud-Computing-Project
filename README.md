@@ -85,7 +85,7 @@ Note that instead of `localhost` in the POST url, you need to type service ip.
 
 Mehod2: <br>
 simply use `sudo minikube kubectl port-forward service/urlshortener 8081:8081`
-and then you can use it with Usage command that is described below.
+and then you can use system with Usage command that is described below.
 ## Usage
 
 ```bash 
