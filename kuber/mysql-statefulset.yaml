@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysqls
+  labels:
+    app: mysqls
+spec:
+  ports:
+  - port: 3306
+  selector:
+    app: mysqls
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: database
+spec:
+  serviceName: "mysqls"
+  replicas: 2
+  selector:
+    matchLabels:
+      app: database
+  template:
+    metadata:
+      labels:
+        app: database
+    spec:
+      containers:
+      - image: mysql:5.6
+        name: database
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: MYSQL_PASSWORD
+        ports:
+        - containerPort: 3306
+        name: database
+        volumeMounts:
+        - name: volname
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: volname
+        persistentVolumeClaim:
+          claimName: mysql-pv-claim
