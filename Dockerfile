@@ -24,4 +24,6 @@ RUN mkdir -p /usr/src/conf
 
 #COPY appConfigs/ /usr/src/conf
 
+EXPOSE 8081
+
 ENTRYPOINT ["java", "-jar", "/usr/app/finalProject-0.1-spring-boot.jar", "--spring.config.name=applicationConfig,secretConfig", "--spring.config.location=file:///usr/src/conf/"]

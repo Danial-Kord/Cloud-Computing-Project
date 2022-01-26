@@ -1,0 +1,27 @@
+version: "3.7"
+services:
+  api_service:
+    build: .
+    restart: always
+    ports:
+      - 8081:8081
+    depends_on:
+      - mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=c3VwZXJzZWNyZXRwYXNz
+    volumes:
+      - /home/danial/Desktop/Cloud-Computing-Project/appConfigs/applicationConfig.properties:/usr/src/conf/applicationConfig.properties
+      - /home/danial/Desktop/Cloud-Computing-Project/appConfigs/secretConfig.properties:/usr/src/conf/secretConfig.properties
+    command: sh -c './wait-for mysql_db:3306 -- npm start'
+  mysql:
+    image: "mysql:8.0"
+    restart: always
+    ports:
+      - 3307:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=c3VwZXJzZWNyZXRwYXNz
+    volumes:
+      - myDBVolume:/var/lib/mysql
+volumes:
+  myDBVolume:
+    external: true
