@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: urlshortener
+  name: urlshortener
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: urlshortener
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: urlshortener
+    spec:
+      containers:
+      - image: danialkm/urlshortener:1.0
+        name: urlshortener
+        resources: {}
+        ports:
+          - containerPort: 8081
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: MYSQL_PASSWORD
+                name: mysql-secret
+        volumeMounts:
+          - mountPath: /usr/src/conf/applicationConfig.properties
+            subPath: applicationConfig.properties
+            name: config-map
+            readOnly: true
+
+          - mountPath: /usr/src/conf/secretConfig.properties
+            subPath: secretConfig.properties
+            name: config-map2
+            readOnly: true
+      volumes:
+        - name: config-map
+          configMap:
+            name: urlshortener-config
+        - name: config-map2
+          configMap:
+            name: urlshortener-config2
+status: {}
