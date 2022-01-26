@@ -21,10 +21,10 @@ Note that there is no need to change user value inside `applicationConfig.proper
 ## Method 1:
 
 ### Docker Compose
-First creat volume with docker `volume create myDBVolume`
-Then build docker compose file with `sudo docker-compose build`
-Finaly run the system with `sudo docker-compose up`
-Note that domain address in `./appConfigs/applicationConfig.properties` should be `mysql`
+First creat volume with docker `volume create myDBVolume` <br>
+Then build docker compose file with `sudo docker-compose build` <br>
+Finaly run the system with `sudo docker-compose up` <br>
+Note that domain address in `./appConfigs/applicationConfig.properties` should be `mysql` <br>
 
 
 ## Method2:
@@ -37,7 +37,7 @@ sudo docker run --detach --name={containerName} --env="MYSQL_ROOT_PASSWORD={root
 ### application Dockerfile
 Before doing the following steps, see ip address of database wiith `sudo docker inspect {container name}`and replace domain address in `./appConfigs/applicationConfig.properties` with founded ip.
 <br>
-For creating docker runtime image of project run `sudo docker build -t {your desired name of image} .`
+For creating docker runtime image of project run `sudo docker build -t {your desired name of image} .` <br>
 Then run the image using 
 ```bash
 sudo docker run --mount type=bind,src={HostPathToConfigFolder},target=/usr/src/conf -p {HostPort}:8081 -it {yourDesiredNameOfImage}
