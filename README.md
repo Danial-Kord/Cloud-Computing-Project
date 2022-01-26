@@ -77,11 +77,15 @@ If you reach here, It is all done. For testing your service try steps below: <br
 Before moving forward save try to copy the ip of the service in the `sudo minikube kubectl get service -- -o wide` command.
 
 ### Testing service pod
+Method1:
 1. `sudo minikube kubectl run test -- --image=danialkm/myubuntu:latest sleep infinity`
 2. `sudo minikube kubectl exec -- --stdin --tty test -- bash` <br>
 in the opened bash check the system working by typing Usage command below! <br>
 Note that instead of `localhost` in the POST url, you need to type service ip.
 
+Mehod2: <br>
+simply use `sudo minikube kubectl port-forward service/urlshortener 8081:8081`
+and then you can use system with Usage command that is described below.
 ## Usage
 
 ```bash 
