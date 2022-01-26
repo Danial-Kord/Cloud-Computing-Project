@@ -17,19 +17,31 @@ Note that `applicationConfig.properties` and `secretConfig.properties` are confi
 Note that there is no need to change user value inside `applicationConfig.properties` if you are making database using below commands
 
 ## Docker config
+
+## Method 1:
+
+### Docker Compose
+First creat volume with docker `volume create myDBVolume`
+Then build docker compose file with `sudo docker-compose build`
+Finaly run the system with `sudo docker-compose up`
+Note that domain address in `./appConfigs/applicationConfig.properties` should be `mysql`
+
+
+## Method2:
+
+### Database build
+Simply run 
+```bash 
+sudo docker run --detach --name={containerName} --env="MYSQL_ROOT_PASSWORD={rootPassword}" --publish {host port}:{DBport} --volume=/root/docker/{containerName}/conf.d:/etc/mysql/conf.d --volume={DBlocalStorage}:/var/lib/mysql mysql
+```
 ### application Dockerfile
+Before doing the following steps, see ip address of database wiith `sudo docker inspect {container name}`and replace domain address in `./appConfigs/applicationConfig.properties` with founded ip.
+<br>
 For creating docker runtime image of project run `sudo docker build -t {your desired name of image} .`
 Then run the image using 
 ```bash
 sudo docker run --mount type=bind,src={HostPathToConfigFolder},target=/usr/src/conf -p {HostPort}:8081 -it {yourDesiredNameOfImage}
 ```
-### database build
-Simply run 
-```bash 
-sudo docker run --detach --name={containerName} --env="MYSQL_ROOT_PASSWORD={rootPassword}" --publish {host port}:{DBport} --volume=/root/docker/{containerName}/conf.d:/etc/mysql/conf.d --volume={DBlocalStorage}:/var/lib/mysql mysql
-```
-you can use `sudo docker inspect {container name}` to check ip and other values for connection purposes
-
 
 
 ## Minikube
@@ -83,7 +95,7 @@ Method1:
 in the opened bash check the system working by typing Usage command below! <br>
 Note that instead of `localhost` in the POST url, you need to type service ip.
 
-Mehod2: <br>
+Method2: <br>
 simply use `sudo minikube kubectl port-forward service/urlshortener 8081:8081`
 and then you can use system with Usage command that is described below.
 ## Usage
